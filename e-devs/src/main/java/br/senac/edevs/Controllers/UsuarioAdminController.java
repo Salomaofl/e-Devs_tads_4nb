@@ -3,10 +3,9 @@ package br.senac.edevs.Controllers;
 import br.senac.edevs.model.repositories.UsuarioAdminRepository;
 import br.senac.edevs.model.entities.UsuarioAdmin;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/usuario")
@@ -14,11 +13,19 @@ public class UsuarioAdminController {
 
     @Autowired
     private UsuarioAdminRepository usuarioAdminRepository;
-    @PostMapping
-    public UsuarioAdmin novoUsuarioAdmin (@RequestParam String login, String password){
-        UsuarioAdmin usuario = new UsuarioAdmin(login, password);
-        usuarioAdminRepository.save(usuario);
-        return usuario;
+    @RequestMapping(method = {RequestMethod.POST, RequestMethod.PUT})
+    public @ResponseBody UsuarioAdmin salvarUsuario(UsuarioAdmin usuarioAdmin) {
+        usuarioAdminRepository.save(usuarioAdmin);
+        return usuarioAdmin;
+    }
 
+    @GetMapping
+    public Iterable<UsuarioAdmin> obterProdutos() {
+        return usuarioAdminRepository.findAll();
+    }
+
+    @GetMapping(path = "/{id}")
+    public Optional<UsuarioAdmin> obterProdutoPorId(@PathVariable int id) {
+        return usuarioAdminRepository.findById(id);
     }
 }
