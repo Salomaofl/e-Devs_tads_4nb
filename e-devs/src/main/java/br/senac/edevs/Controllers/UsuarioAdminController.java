@@ -20,12 +20,12 @@ public class UsuarioAdminController {
     }
 
     @GetMapping
-    public Iterable<UsuarioAdmin> obterProdutos() {
+    public Iterable<UsuarioAdmin> obterUsuarios() {
         return usuarioAdminRepository.findAll();
     }
 
     @GetMapping(path = "/{id}")
-    public Optional<UsuarioAdmin> obterProdutoPorId(@PathVariable int id) {
+    public Optional<UsuarioAdmin> obterUsuarioPorId(@PathVariable int id) {
         return usuarioAdminRepository.findById(id);
     }
 }
