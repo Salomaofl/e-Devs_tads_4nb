@@ -10,7 +10,7 @@
 ![Estrutura das Pastas](/ImagensProjeto/Estrutura_das_Pastas.png)
 
 # Modelo de Dados Físico
-![Modelo de Dados Físico](/ImagensProjeto/Módelo_Fisico.png)
+![Modelo de Dados Físico](/ImagensProjeto/Modelo_Fisico.png)
 
 # Modelo de Dados Lógico
-![Modelo de Dados Lógico](/ImagensProjeto/Módelo_Logico.png)
+![Modelo de Dados Lógico](/ImagensProjeto/Modelo_Logico.png)
