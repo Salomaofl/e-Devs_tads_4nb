@@ -19,18 +19,20 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public String login(String email, String password) {
+    public Boolean login(String email, String password) {
+        Boolean result;
         Usuario usuario = usuarioRepository.findByEmail(email);
-
-        if (usuario != null && usuario.getPassword().equals(password)) {
+        if (usuario != null) {
             httpSession.setAttribute("email", email);
             httpSession.setAttribute("role", usuario.getRole());
-            return "redirect:/Card"; // Redirect upon successful login
+            result = true;
         } else {
             // Clear session attributes if login fails
             httpSession.removeAttribute("email");
             httpSession.removeAttribute("role");
-            return "redirect:/TelaLogin"; // Redirect to login page if login fails
+            result = false;
         }
+
+        return result;
     }
 }

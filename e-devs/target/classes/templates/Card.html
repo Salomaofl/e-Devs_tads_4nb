@@ -21,6 +21,10 @@
         <button onclick="window.location.href='/estoque'">Estoque</button>
     </div>
 
+    <div th:if="${#role == null}">
+        Role is null
+    </div>
+
 </div>
 </body>
 </html>

@@ -19,3 +19,4 @@ public class Usuario {
     private Integer role;
 
 }
+
