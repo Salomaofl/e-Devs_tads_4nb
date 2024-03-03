@@ -25,14 +25,8 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String loginSubmit(Usuario usuario, Model model)
+    public void loginSubmit(Usuario usuario, Model model)
     {
-        Boolean resultado = loginService.login(usuario.getEmail(), usuario.getPassword());
-
-        if(resultado)
-        {
-            return "Card";
-        }
-        return null;
+        loginService.login(usuario.getEmail(), usuario.getPassword());
     }
 }

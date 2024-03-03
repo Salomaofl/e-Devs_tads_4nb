@@ -1,17 +1,16 @@
 package br.senac.edevs.Service.Login;
 
+import br.senac.edevs.model.Usuario;
 import br.senac.edevs.model.repositories.UsuarioRepository;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
-public class LoginServiceImpl implements LoginService{
+public class LoginServiceImpl implements LoginService {
 
     @Autowired
-    HttpSession httpSession;
+    private HttpSession httpSession;
 
     private final UsuarioRepository usuarioRepository;
 
@@ -19,21 +18,19 @@ public class LoginServiceImpl implements LoginService{
         this.usuarioRepository = usuarioRepository;
     }
 
-
     @Override
-    public Boolean login(String email, String password)
-    {
-//        List<String> UsuarioAutenticado;
+    public String login(String email, String password) {
+        Usuario usuario = usuarioRepository.findByEmail(email);
 
-        Integer role = usuarioRepository.findByEmail(email).getRole();
-        if(email != null)
-        {
+        if (usuario != null && usuario.getPassword().equals(password)) {
             httpSession.setAttribute("email", email);
-            httpSession.setAttribute("role", role);
-            return true;
-        }
-        else {
-            return false;
+            httpSession.setAttribute("role", usuario.getRole());
+            return "redirect:/Card"; // Redirect upon successful login
+        } else {
+            // Clear session attributes if login fails
+            httpSession.removeAttribute("email");
+            httpSession.removeAttribute("role");
+            return "redirect:/TelaLogin"; // Redirect to login page if login fails
         }
     }
 }
