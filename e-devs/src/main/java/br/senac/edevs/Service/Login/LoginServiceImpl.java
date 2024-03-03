@@ -27,9 +27,6 @@ public class LoginServiceImpl implements LoginService {
             httpSession.setAttribute("role", usuario.getRole());
             result = true;
         } else {
-            // Clear session attributes if login fails
-            httpSession.removeAttribute("email");
-            httpSession.removeAttribute("role");
             result = false;
         }
 
