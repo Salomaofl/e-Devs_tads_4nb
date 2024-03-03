@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{card.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/card.css">
+    <title>Document</title>
+</head>
+<body>
+
+<div class="options-container">
+
+    <div th:if="${role == 1}">
+        <button onclick="window.location.href='/listar_usuarios'">Listar Usuários</button>
+        <button onclick="window.location.href='/cadastrar_usuario'">Cadastrar Usuário</button>
+    </div>
+
+    <div th:if="${role == 2}">
+        <button onclick="window.location.href='/estoque'">Estoque</button>
+    </div>
+
+</div>
+</body>
+</html>

@@ -10,9 +10,6 @@
         <module name="e-devs" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="e-devs" target="17" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
